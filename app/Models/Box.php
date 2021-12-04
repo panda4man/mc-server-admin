@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Box extends Model
 {
@@ -14,4 +15,9 @@ class Box extends Model
     protected $casts = [
         'server_roots' => 'array'
     ];
+
+    public function servers(): HasMany
+    {
+        return $this->hasMany(Server::class);
+    }
 }

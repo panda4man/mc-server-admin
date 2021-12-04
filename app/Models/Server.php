@@ -10,11 +10,21 @@ class Server extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['label', 'root', 'size', 'motd', 'gamemode', 'level_name', 'difficulty', 'server_port', 'hardcore'];
+    protected $fillable = ['label', 'root', 'size', 'motd', 'gamemode', 'level_name', 'difficulty', 'server_port', 'hardcore', 'last_played_at'];
 
     protected $casts = [
-        'hardcore' => 'boolean'
+        'hardcore'       => 'boolean',
+        'last_played_at' => 'datetime',
     ];
+
+    public function setRootAttribute($value)
+    {
+        if (substr($value, -1) === '/') {
+            $value = substr($value, 0, -1);
+        }
+
+        $this->attributes['root'] = $value;
+    }
 
     public function box(): BelongsTo
     {

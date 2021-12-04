@@ -8,10 +8,12 @@ use App\Services\ServerMetadataService;
 class RefreshServerProperties extends BaseAction
 {
     private Server $server;
+    private bool $update_model;
 
-    public function __construct(Server $server)
+    public function __construct(Server $server, bool $update_model = true)
     {
         $this->server = $server;
+        $this->update_model = $update_model;
     }
 
     public function call(): bool
@@ -22,7 +24,9 @@ class RefreshServerProperties extends BaseAction
             $this->server->{$key} = $dto->{$key};
         }
 
-        $this->server->save();
+        if($this->update_model) {
+            $this->server->save();
+        }
 
         return true;
     }

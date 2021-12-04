@@ -25,6 +25,7 @@ class CreateServersTable extends Migration
             $table->string('difficulty')->nullable();
             $table->unsignedInteger('server_port')->nullable();
             $table->boolean('hardcore')->default(false);
+            $table->timestamp('last_played_at')->nullable();
             $table->timestamps();
         });
     }
