@@ -10,7 +10,7 @@ class Server extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['label', 'root', 'size', 'motd', 'gamemode', 'level_name', 'difficulty', 'server_port', 'hardcore', 'last_played_at'];
+    protected $fillable = ['label', 'root', 'version', 'size', 'motd', 'gamemode', 'level_name', 'difficulty', 'server_port', 'hardcore', 'last_played_at'];
 
     protected $casts = [
         'hardcore'       => 'boolean',

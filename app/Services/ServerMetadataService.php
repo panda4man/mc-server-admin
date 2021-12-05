@@ -18,12 +18,12 @@ class ServerMetadataService
         }
 
         $contents = file_get_contents($path);
-        $lines    = collect(explode(PHP_EOL, $contents))->mapWithKeys(function ($line) {
-            $parts = explode("=", trim($line), 2);
-
-            return [
-                $parts[0] => $parts[1]
-            ];
+        $lines    = collect(explode(PHP_EOL, $contents))->map(function ($line) {
+            return explode("=", trim($line), 2);
+        })->filter(function ($tuple) {
+            return !empty($tuple[0] ?? null) && !empty($tuple[1] ?? null);
+        })->mapWithKeys(function ($tuple) {
+            return [$tuple[0] => $tuple[1]];
         });
         $dto      = new ServerProperties();
 

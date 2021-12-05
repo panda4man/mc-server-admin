@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Actions\RefreshServerFolderSize;
 use App\Actions\RefreshServerProperties;
+use App\Actions\RefreshServerTimestamp;
+use App\Actions\RefreshServerVersion;
 use App\Models\Box;
 use App\Models\Server;
 use Illuminate\Support\Collection;
@@ -44,6 +46,8 @@ class BoxServerRootAnalyzer
 
             RefreshServerProperties::make($server, false)->call();
             RefreshServerFolderSize::make($server, false)->call();
+            RefreshServerTimestamp::make($server, false)->call();
+            RefreshServerVersion::make($server, false)->call();
 
             $server->save();
         });

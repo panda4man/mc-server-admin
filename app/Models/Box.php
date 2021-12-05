@@ -10,7 +10,7 @@ class Box extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'root', 'server_roots', 'used_space'];
+    protected $fillable = ['name', 'root', 'domain', 'local_domain', 'server_roots', 'used_space'];
 
     protected $casts = [
         'server_roots' => 'array'

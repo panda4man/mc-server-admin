@@ -17,6 +17,7 @@ class CreateBoxesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('root')->nullable();
+            $table->string('domain')->nullable();
             $table->json('server_roots')->nullable();
             $table->unsignedInteger('used_space')->nullable();
             $table->timestamps();

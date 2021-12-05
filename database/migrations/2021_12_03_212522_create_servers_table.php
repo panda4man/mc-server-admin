@@ -18,6 +18,7 @@ class CreateServersTable extends Migration
             $table->foreignId('box_id')->constrained()->cascadeOnDelete();
             $table->string('label')->nullable();
             $table->string('root')->nullable();
+            $table->string('version')->nullable();
             $table->unsignedInteger('size')->nullable();
             $table->string('motd')->nullable();
             $table->string('gamemode')->nullable();
